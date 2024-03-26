@@ -16,9 +16,7 @@ function Home() {
     </div>
    </section>
 
-   <footer className='footer-section'>
-   <span>&copy; </span><p className="footer-content"> 2024 #VANLIFE</p>
-   </footer>
+   
    </>
   )
 }
