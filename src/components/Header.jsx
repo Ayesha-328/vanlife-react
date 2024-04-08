@@ -1,17 +1,23 @@
-import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { NavLink, Link ,useNavigate} from 'react-router-dom'
 import LoginIcon from '../assets/images/avatar-icon.png'
+import { set } from 'firebase/database';
 
-function Header() {
+function Header({ isLoggedIn, onLogout }) {
+  const navigate=useNavigate();
+
   const activeStyle={
     textDecoration: "underline",
     color: "#161616"
     
   }
+  function handleLogout(){
+    onLogout();
+    navigate("/",{replace: true})
+  }
+  
+ 
 
-  function fakeLogOut() {
-    localStorage.removeItem("loggedin")
-}
 
   return (
     <nav className="navbar">
@@ -30,10 +36,14 @@ function Header() {
           to="/host"
           style={({isActive})=> isActive ? activeStyle : null}
           >Host</NavLink></li>
+          {
+            isLoggedIn ? 
+            <li className="menu-item"><button className='btn' onClick={handleLogout}>Logout</button></li>
+          :
           <li className="menu-link"><Link to="/login">
             <img src={LoginIcon} alt="" className="login-icon" />
           </Link></li>
-          {/* <li className="menu-link"><button onClick={fakeLogOut}>X</button></li> */}
+          }
      </ul>
     </nav>
   )

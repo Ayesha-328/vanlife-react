@@ -3,6 +3,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+.error{
+    color: red;
+}
 a{
     text-decoration: none;
     color: black;
@@ -69,7 +72,14 @@ body{
     text-decoration: underline;
     color: #161616;
 }
-
+.menu-item .btn{
+    width: 75px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+}
 /* Home Page Styling */
 .home-container{
     width: 100%;

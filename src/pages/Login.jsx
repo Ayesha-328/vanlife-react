@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUser } from '../api';
 
-function Login() {
+function Login({ onLogin }) {
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -26,7 +26,7 @@ function Login() {
             .then(data => {
                 // console.log(data)
                 setError(null)
-                localStorage.setItem("loggedin",true  )
+                onLogin(); // Call the onLogin function passed from parent
                 navigate(path ? path : "/host", { replace:true })
             })
             .catch(err => setError(err))
@@ -50,7 +50,7 @@ function Login() {
     return (
         <div className="container">
             <div className="login-container">
-                {authState ? <h3>{authState}</h3> : null}
+                {authState ? <h3 className='error'>*{authState}</h3> : null}
                 <h3 className="main-heading">Sign in to your account</h3>
                 {error?.message && <h4>{error.message}</h4>}
                 <form onSubmit={handleSubmit} action="" className='login-form'>

@@ -1,12 +1,14 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 
-function Layout() {
+function Layout({ isLoggedIn, onLogout }) {
+
+  
   return (
     <div className="site-wrapper">
-<Header /> 
+ <Header isLoggedIn={isLoggedIn} onLogout={onLogout} />
     <main>
     <Outlet /> 
     </main>

@@ -5,10 +5,10 @@ import Star from "../../assets/images/star.png"
 
 function Dashboard() {
   const [hostVan,setHostVan]=useState([])
-  console.log(hostVan)
+  // console.log(hostVan)
 
   useEffect(()=>{
-    console.log("Use Effect ran")
+    // console.log("Use Effect ran")
     fetch("/api/host/vans")
     .then(res=>res.json())
     .then(data=>setHostVan(data.vans))
